@@ -1,1 +1,2 @@
-Code for the first questions of Facebook Hacker Cup 2013.
+# Code Snippets
+Never lose a piece of thought!
