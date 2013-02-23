@@ -1,11 +1,14 @@
-"""
-Given a total amount and a few types of coin, find the change
-"""
+coinsChange = (goalAmount, changeArray) ->
+	if goalAmount < 0 then throw new Error("Total amount should be positive.")
 
-getChange = (goalAmount, changeArray) ->
 	remainingChange = goalAmount
 	finalChangeCombination = []
-	finalChangeCombination[i] = 0 for i in [0...changeArray.length]
+
+	# Default the change array elements to 0. While at it, check for invalid $0 change.
+	for i in [0...changeArray.length]
+		if changeArray[i] <= 0 then throw new Error("Invalid change coins found: " + changeArray[i])
+		finalChangeCombination[i] = 0
+
 	currentCoinIndex = 0
 
 	changeArray.sort((a, b) -> b - a)
@@ -16,10 +19,12 @@ getChange = (goalAmount, changeArray) ->
 			remainingChange -= changeArray[currentCoinIndex] * finalChangeCombination[currentCoinIndex]		
 			currentCoinIndex++
 
+	# Do a greedy run to have a quick estimate of coins change using modulo.
 	computeCombination()
 
 	currentCoinIndex = changeArray.length - 1
 
+	# Adjust.
 	while remainingChange isnt 0 and currentCoinIndex >= 0
 		currentCoinIndex -= 1
 		remainingChange = goalAmount
@@ -36,6 +41,4 @@ getChange = (goalAmount, changeArray) ->
 
 	return finalChangeCombination
 
-
-console.log getChange(8109, [30, 8, 6, 5, 2])
-console.log getChange(6, [4, 3, 1]) # Not optimal.
+module.exports = coinsChange
