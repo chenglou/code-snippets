@@ -17,8 +17,17 @@ describe "Get coins changes", ->
 		expect(coinsChange(1, [])).toEqual([])
 		expect(coinsChange(0, [])).toEqual([])
 
-	it "should be a normal case", ->
+	it "should be normal cases", ->
 		expect(coinsChange(4, [1, 2])).toEqual([2, 0])
+		expect(coinsChange(7, [5, 4, 2])).toEqual([1, 0, 1])
+		expect(coinsChange(9, [5, 3, 2])).toEqual([1, 0, 2])
+
+	it "should get as close as possible (without overflowing) to the result when it's not possible to get the exact amount", ->
+		expect(coinsChange(7, [5, 3])).toEqual([0, 2])
+
+	it "should handle floating points", ->
+		expect(coinsChange(4.5, [0.1, 2.2])).toEqual([2, 1])
+		expect(coinsChange(4.5, [2.2, 2.1, 0.2])).toEqual([1, 1, 1])
 
 	it "should be a normal case, but not optimal", ->
 		expect(coinsChange(6, [4, 3, 2])).toEqual([1, 0, 1])
