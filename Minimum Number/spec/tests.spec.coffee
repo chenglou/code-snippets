@@ -16,3 +16,4 @@ describe "Get the minimum natural number", ->
 		expect(minimumNumber([-1, 0, 1, 2, 3, 5, 7, 8, 13])).toBe(4)
 		expect(minimumNumber([-1, 1, 2, 3, 5, 7, 8, 13])).toBe(0)
 		expect(minimumNumber([-1])).toBe(0)
+		expect(minimumNumber([-1, 0])).toBe(1)
