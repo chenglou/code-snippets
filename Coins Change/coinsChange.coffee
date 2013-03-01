@@ -1,6 +1,5 @@
+FLOATING_TOFIXED_POSITION = 10
 coinsChange = (goalAmount, changeArray) ->
-	FLOATING_TOFIXED_POSITION = 10
-	
 	if goalAmount < 0 then throw new Error("Total amount should be positive.")
 
 	remainingChange = goalAmount
