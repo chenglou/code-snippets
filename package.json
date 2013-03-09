@@ -2,11 +2,11 @@
 	"name": "code-snippets",
 	"version": "0.0.8",
 	"private": true,
-	"author": "flsg <chenglou92@gmail.com>",
+	"author": "chenglou <chenglou92@gmail.com>",
 	"description": "Random programming problems and solutions.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/flsg/code-snippets.git"
+		"url": "https://github.com/chenglou/code-snippets.git"
 	},
 	"dependencies" : {
 		"coffee-script": "1.6.x",
