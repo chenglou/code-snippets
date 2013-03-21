@@ -1,2 +1,2 @@
 # Code Snippets
-Never lose a piece of thought!
+Dump of all the tiny coding exercises I've seen/thought of.
