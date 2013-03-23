@@ -1,0 +1,1 @@
+Various implementation of calculation of Fibonacci numbers. The main purpose is to show some programming techniques rather than mathematical insights.
