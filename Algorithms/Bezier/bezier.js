@@ -17,18 +17,18 @@
   };
 
   pt3 = {
-    x: 0.75 * CANVAS_WIDTH,
+    x: 0.35 * CANVAS_WIDTH,
     y: 0.0 * CANVAS_HEIGHT
   };
 
   pt4 = {
-    x: 0.4 * CANVAS_WIDTH,
-    y: 0.5 * CANVAS_HEIGHT
+    x: 0.75 * CANVAS_WIDTH,
+    y: 0.2 * CANVAS_HEIGHT
   };
 
-  t = 0.5;
+  t = 0.9;
 
-  minimumDotsDistance = Math.pow(1 / 2, MAX_RECURSION_DEPTH);
+  minimumDotsDistance = Math.pow(t, MAX_RECURSION_DEPTH);
 
   window.onload = function() {
     var context, drawCubicBezier, drawQuadraticBezier, pt;
@@ -39,8 +39,8 @@
     pt = function(x, y) {
       return context.fillRect(x, y, 1, 1);
     };
-    pt(pt1.x * CANVAS_WIDTH, pt1.y * CANVAS_HEIGHT);
-    pt(pt2.x * CANVAS_WIDTH, pt2.y * CANVAS_HEIGHT);
+    pt(pt1.x, pt1.y);
+    pt(pt2.x, pt2.y);
     drawQuadraticBezier = function(pt1, pt2, pt3) {
       var cuttingPlace1, cuttingPlace2, distanceX, distanceY, localMinimumDotsDistance, pointToDraw;
 
@@ -66,8 +66,45 @@
       drawQuadraticBezier(pt1, cuttingPlace1, pointToDraw);
       return drawQuadraticBezier(pointToDraw, cuttingPlace2, pt3);
     };
-    drawCubicBezier = function(pt1, pt2, pt3, pt4) {};
-    return drawQuadraticBezier(pt1, pt3, pt2);
+    drawCubicBezier = function(pt1, pt2, pt3, pt4) {
+      var cuttingPlace1, cuttingPlace2, cuttingPlace3, distanceX, distanceY, localMinimumDotsDistance, pointToDraw, recutting12, recutting23;
+
+      distanceX = Math.abs(pt1.x - pt2.x);
+      distanceY = Math.abs(pt1.y - pt2.y);
+      localMinimumDotsDistance = Math.max(1, minimumDotsDistance);
+      if (distanceX < localMinimumDotsDistance && distanceY < localMinimumDotsDistance) {
+        return;
+      }
+      cuttingPlace1 = {
+        x: pt1.x + (pt2.x - pt1.x) * t,
+        y: pt1.y + (pt2.y - pt1.y) * t
+      };
+      cuttingPlace2 = {
+        x: pt2.x + (pt3.x - pt2.x) * t,
+        y: pt2.y + (pt3.y - pt2.y) * t
+      };
+      cuttingPlace3 = {
+        x: pt3.x + (pt4.x - pt3.x) * t,
+        y: pt3.y + (pt4.y - pt3.y) * t
+      };
+      recutting12 = {
+        x: cuttingPlace1.x + (cuttingPlace2.x - cuttingPlace1.x) * t,
+        y: cuttingPlace1.y + (cuttingPlace2.y - cuttingPlace1.y) * t
+      };
+      recutting23 = {
+        x: cuttingPlace2.x + (cuttingPlace3.x - cuttingPlace2.x) * t,
+        y: cuttingPlace2.y + (cuttingPlace3.y - cuttingPlace2.y) * t
+      };
+      pointToDraw = {
+        x: recutting12.x + (recutting23.x - recutting12.x) * t,
+        y: recutting12.y + (recutting23.y - recutting12.y) * t
+      };
+      pt(pointToDraw.x, pointToDraw.y);
+      drawCubicBezier(pt1, cuttingPlace1, recutting12, pointToDraw);
+      return drawCubicBezier(pointToDraw, recutting23, cuttingPlace3, pt4);
+    };
+    drawQuadraticBezier(pt1, pt3, pt2);
+    return drawCubicBezier(pt1, pt3, pt4, pt2);
   };
 
 }).call(this);
