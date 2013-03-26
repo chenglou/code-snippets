@@ -1,0 +1,78 @@
+We first define two points, the starting and the ending. **The values are
+portions of the overall size**, not actual pixel values.
+    
+    CANVAS_WIDTH = CANVAS_HEIGHT = 1024
+    MAX_RECURSION_DEPTH = 300
+
+    pt1 = x: 0 * CANVAS_WIDTH, y: 0.5 * CANVAS_HEIGHT
+    pt2 = x: 1 * CANVAS_WIDTH, y: 0.5 * CANVAS_HEIGHT
+
+Here's the third point, an an optional 4th one for quadratic curve. The latter's
+x coodrinates is always bgger than the former.
+
+    pt3 = x: 0.75 * CANVAS_WIDTH, y: 0.0 * CANVAS_HEIGHT
+    pt4 = x: 0.4 * CANVAS_WIDTH, y: 0.5 * CANVAS_HEIGHT
+
+Then there's the proportion factor
+
+    t = 0.5
+    minimumDotsDistance = Math.pow(1 / 2, MAX_RECURSION_DEPTH)
+
+    window.onload = ->
+        context = document.getElementById("sheet").getContext "2d"
+        context.fillStyle = "black"
+        context.beginPath()
+
+Draw the first two control points. It's too long to write `fillRect x, y, 1, 1`
+each time. Here's an alias.
+    
+        pt = (x, y) -> context.fillRect x, y, 1, 1
+
+        pt pt1.x * CANVAS_WIDTH, pt1.y * CANVAS_HEIGHT
+        pt pt2.x * CANVAS_WIDTH, pt2.y * CANVAS_HEIGHT
+
+Here's the recursive function to draw points. The exercice here is **not to use
+the built-in bezier function (obviously)**, and not to use lineTo. Just dots
+after dots.
+
+We first set the line through which the point passes. This line cuts the line
+formed by pt1 and pt2 at proportion t, and also cuts pt2 - pt3 at the same
+proportion. Then, this new line itself is cut at proportion t. The point on that
+cutting place is the one we want to draw.
+
+Parameter order: start, middle, finish.
+
+        drawQuadraticBezier = (pt1, pt2, pt3) ->
+            distanceX = Math.abs pt1.x - pt2.x
+            distanceY = Math.abs pt1.y - pt2.y
+            localMinimumDotsDistance = Math.max(1, minimumDotsDistance)
+            if distanceX < localMinimumDotsDistance and distanceY < localMinimumDotsDistance
+                return
+            cuttingPlace1 =
+                x: pt1.x + (pt2.x - pt1.x) * t
+                y: pt1.y + (pt2.y - pt1.y) * t
+            cuttingPlace2 =
+                x: pt2.x + (pt3.x - pt2.x) * t
+                y: pt2.y + (pt3.y - pt2.y) * t
+            pointToDraw =
+                x: cuttingPlace1.x + (cuttingPlace2.x - cuttingPlace1.x) * t
+                y: cuttingPlace1.y + (cuttingPlace2.y - cuttingPlace1.y) * t
+
+            pt pointToDraw.x, pointToDraw.y
+            drawQuadraticBezier pt1, cuttingPlace1, pointToDraw
+            drawQuadraticBezier pointToDraw, cuttingPlace2, pt3
+
+        drawCubicBezier = (pt1, pt2, pt3, pt4) ->
+        
+
+Notice the parameter order.
+
+        drawQuadraticBezier pt1, pt3, pt2
+
+
+    
+
+
+
+
+
