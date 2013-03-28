@@ -1,10 +1,8 @@
 Dynamic programming.
 
-    string1 = "asdafkjzcz"
-    string2 = "ab cdsf"
     lookup = {}
 
-    levenshteinDistance = (string1, string2, i, j) ->
+    levenshteinDistance = (string1, string2, i = 0, j = 0) ->
         key = i + "|" + string1.length + "|" + j + "|" + string2.length
         if lookup[key]? then return lookup[key]
         if string1.length is 0 then return string2.length
@@ -21,4 +19,4 @@ Dynamic programming.
         lookup[key] = distance
         return distance
 
-    console.log levenshteinDistance string1, string2, 0, 0
+    module.exports = levenshteinDistance
