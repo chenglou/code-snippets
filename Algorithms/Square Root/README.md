@@ -1,1 +1,0 @@
-Implement the square root function.
