@@ -1,4 +1,5 @@
-# Get Fibonacci Numbers.
+# Fibonacci Numbers
+
 Various implementation of calculation of Fibonacci numbers.
 
 The main purpose is to show some programming techniques rather than mathematical

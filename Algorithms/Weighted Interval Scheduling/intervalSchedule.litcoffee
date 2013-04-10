@@ -1,4 +1,5 @@
-# Weighted Interval Scheduling.
+# Weighted Interval Scheduling
+
 The goal is to maximize the active time.
 
 **Insight:** let p(n) be the nearest task before n that doesn't overlap it,

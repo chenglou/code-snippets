@@ -1,4 +1,5 @@
-# Levenshtein Distance.
+# Levenshtein Distance
+
 Find the "editing distance" between two strings.
 
 Recursive version with memoization. `i` and `j` are for tracking the progress,

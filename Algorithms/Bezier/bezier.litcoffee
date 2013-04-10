@@ -1,4 +1,4 @@
-# Quadratic and Cubic Bezier curves.
+# Quadratic and Cubic Bezier curves
 
 We first define two points, the starting and the ending. **The values are
 portions of the overall size**, not actual pixel values.
