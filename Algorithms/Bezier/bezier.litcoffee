@@ -2,7 +2,7 @@
 
 We first define two points, the starting and the ending. **The values are
 portions of the overall size**, not actual pixel values.
-    
+
     CANVAS_WIDTH = CANVAS_HEIGHT = 1024
     MAX_RECURSION_DEPTH = 300
 
@@ -27,7 +27,7 @@ Then there's the proportion factor
 
 Draw the first two control points. It's too long to write `fillRect x, y, 1, 1`
 each time. Here's an alias.
-    
+
         pt = (x, y) -> context.fillRect x, y, 1, 1
 
         pt pt1.x, pt1.y
@@ -94,10 +94,9 @@ Same principe, but with two intermediate control points instead of one.
             pt pointToDraw.x, pointToDraw.y
             drawCubicBezier pt1, cuttingPlace1, recutting12, pointToDraw
             drawCubicBezier pointToDraw, recutting23, cuttingPlace3, pt4
-        
+
 Notice the parameter order.
 
         drawQuadraticBezier pt1, pt3, pt2
         drawCubicBezier pt1, pt3, pt4, pt2
-
 
