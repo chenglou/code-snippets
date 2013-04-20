@@ -8,3 +8,4 @@ describe "Get the sequence", ->
 		expect(lcs([1,1,1], [2,1,2,1,1])).toEqual [1,1,1]
 		expect(lcs([], [2,1,2,1,1])).toEqual []
 		expect(lcs([3,2,1], [1,2,3])).toEqual [3]
+        expect(lcs [1, 5, 2, 3, 4], [1, 2, 3, 4, 5]).toEqual [1, 2, 3, 4]
