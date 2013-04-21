@@ -2,7 +2,7 @@ fib = require '../fibonacci'
 
 table = [0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765]
 test = (fn) ->
-	expect(fn i).toBe table[i] for i in [0...table.length] 
+	expect(fn i).toBe table[i] for i in [0...table.length]
 
 describe "Fibonacci", ->
 	it "Uses iteration", ->

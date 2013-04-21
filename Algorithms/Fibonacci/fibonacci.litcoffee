@@ -6,11 +6,11 @@ The main purpose is to show some programming techniques rather than mathematical
 insights.
 
     fibLoop = (number) ->
-        if number is 1 or number is 2 then return 1
         if number is 0 then return 0
+        if number is 1 then return 1
         prev = 1
-        prevPrev = 1
-        for i in [1..number - 2]
+        prevPrev = 0
+        for i in [0..number - 2]
             current = prev + prevPrev
             prevPrev = prev
             prev = current
@@ -19,21 +19,21 @@ insights.
 Totally defeats the purpose of iteration here, but just a proof of concept.
 
     fibLoopMemoization = (number) ->
-        if number is 1 or number is 2 then return 1
         if number is 0 then return 0
-        arr = [1, 1]
-        current = 3
-        while current <= number
-            arr.push arr[current - 2] + arr[current - 3]
+        if number is 1 then return 1
+        arr = [0, 1]
+        current = 1
+        while current < number
+            arr.push arr[current - 1] + arr[current]
             current++
-        return arr[number - 1]
+        return arr[number]
 
     fibRecursive = (number) ->
-        if number is 1 or number is 2 then return 1
         if number is 0 then return 0
+        if number is 1 then return 1
         return fibRecursive(number - 1) + fibRecursive(number - 2)
 
-    fibRecursiveMemoization = (number, memoizer = {0: 0, 1: 1, 2: 1}) ->
+    fibRecursiveMemoization = (number, memoizer = {0: 0, 1: 1}) ->
         if memoizer[number]? then memoizer[number]
         else
             memoizer[number] = fibRecursiveMemoization(number - 1, memoizer) +
