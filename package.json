@@ -9,11 +9,11 @@
 		"url": "https://github.com/chenglou/code-snippets.git"
 	},
 	"dependencies" : {
-		"coffee-script": "1.6.x",
+		"coffee-script": ">=1.6.x",
 		"data-structures": "*"
 	},
 	"devDependencies": {
-		"jasmine-node": "1.3.x"
+		"jasmine-node": ">=1.3.x"
 	},
 	"engines": {
 		"node": "*"
