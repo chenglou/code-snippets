@@ -2,13 +2,11 @@
 
     rabinKarp = (text, substring) ->
         hashedSubstring = rollHash substring, 0, substring.length
-        for i in [0..text.length - substring.length]
-            hashedTextChunk = rollHash text, 0, substring.length, hashedTextChunk
+        for i in [0..text.length - substring.length] by 1
+            hashedTextChunk = rollHash text, i, substring.length, hashedTextChunk
             if hashedTextChunk is hashedSubstring
                 if text[i...i + substring.length] is substring
                     return i
-            else if i isnt text.length - substring.length
-                hashedTextChunk = rollHash text, i, substring.length, hashedTextChunk
         return -1
 
 Choose a good prime to avoid hashing collisions.
@@ -21,10 +19,11 @@ Choose a good prime to avoid hashing collisions.
                 hashedResult += Math.pow(hashRadix, i) * string.charCodeAt i
         else
             hashedResult = initialHashValue
-            hashedResult -= string.charCodeAt startIndex
+            if startIndex > 0
+                hashedResult -= string.charCodeAt startIndex - 1
             hashedResult /= hashRadix
-            hashedResult += Math.pow(hashRadix, substringLength - 1) * string.charCodeAt startIndex + substringLength
+            hashedResult += Math.pow(hashRadix, substringLength - 1) *
+                            string.charCodeAt startIndex - 1 + substringLength
         return hashedResult
 
     module.exports = rabinKarp
-
