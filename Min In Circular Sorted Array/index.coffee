@@ -4,6 +4,7 @@
 
 _recMinInCircularSortedArray = (array, lowerIndex, upperIndex) ->
   arrayLength = upperIndex - lowerIndex + 1
+
   if arrayLength <= 2
     return Math.min array[lowerIndex], array[upperIndex]
 
