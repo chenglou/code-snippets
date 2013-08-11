@@ -1,4 +1,4 @@
-binarySearch = require '../binarySearch'
+binarySearch = require '../'
 
 describe "Binary search", ->
 		it "should return -1 on empty array", ->

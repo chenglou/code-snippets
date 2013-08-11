@@ -1,4 +1,4 @@
-knapsack = require '../knapsack'
+knapsack = require '../'
 
 describe "Get the max number of items", ->
 	it "should work on edge cases", ->

@@ -1,4 +1,4 @@
-intervalSchedule = require '../intervalSchedule'
+intervalSchedule = require '../'
 recursivelySchedule = intervalSchedule.recursivelySchedule
 iterativelySchedule = intervalSchedule.iterativelySchedule
 

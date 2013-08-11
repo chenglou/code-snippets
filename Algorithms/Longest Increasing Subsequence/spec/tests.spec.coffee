@@ -1,4 +1,4 @@
-lis = require '../longestIncreasingSubsequence'
+lis = require '../'
 
 describe "longest increase subsequence", ->
   it "should return 0 on empty array", ->

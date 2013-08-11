@@ -1,4 +1,4 @@
-lcs = require '../longestCommonSubsequence'
+lcs = require '../'
 
 describe "Get the sequence", ->
   it "should return a good result", ->

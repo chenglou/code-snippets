@@ -1,4 +1,4 @@
-multiply = require '../multiply'
+multiply = require '../'
 
 describe "Multiplication", ->
 	it "should return the good result", ->

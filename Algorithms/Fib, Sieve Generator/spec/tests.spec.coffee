@@ -1,4 +1,4 @@
-fsg= require '../fibSieveGenerator'
+fsg= require '../'
 
 describe "Taking the first item", ->
   it "should return undefined if the list's empty", ->

@@ -1,4 +1,4 @@
-median = require '../median'
+median = require '../'
 
 describe "Find median", ->
   it "should return nothing for empty array", ->

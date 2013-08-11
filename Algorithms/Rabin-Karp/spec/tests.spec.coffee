@@ -1,4 +1,4 @@
-rabinKarp = require '../rabinKarp'
+rabinKarp = require '../'
 
 describe "Find substring", ->
   it "should find them on edges", ->

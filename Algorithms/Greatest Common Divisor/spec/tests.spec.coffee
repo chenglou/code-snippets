@@ -1,4 +1,4 @@
-GCD = require '../GCD'
+GCD = require '../'
 
 describe "Greatest common divisor", ->
   it "should return 0 on 0, 0", ->

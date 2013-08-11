@@ -1,4 +1,4 @@
-squareRoot = require '../squareRoot'
+squareRoot = require '../'
 
 describe "Get the square root of a number", ->
 	it "should return a good result on edge cases", ->

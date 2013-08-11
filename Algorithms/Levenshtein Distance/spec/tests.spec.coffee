@@ -1,4 +1,4 @@
-diff = require '../levenshteinDistance'
+diff = require '../'
 
 describe "Levenstein distance between two strings", ->
 	it "should return the good result", ->
