@@ -1,7 +1,7 @@
 # Output a Two Pair in Poker
 
 suits = ['heart', 'diamond', 'spade', 'clubs']
-ranks = 'A 2 3 4 5 6 7 8 9 10 Knave Queen King'.split ' '
+ranks = 'A 2 3 4 5 6 7 8 9 10 Jack Queen King'.split ' '
 
 twoPairs = ->
   _ranks = ranks.slice()
