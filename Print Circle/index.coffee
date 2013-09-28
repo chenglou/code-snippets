@@ -1,4 +1,4 @@
-# Print a circle using '#'
+# Print a circle using '#' and '.'
 
 printCircle = (r) ->
   # naive printing will result in an oval that's higher than large bc the line
@@ -14,7 +14,6 @@ printCircle = (r) ->
     intermediateStep = 2 * Math.sqrt(r * r - (y - r) * (y - r))
     possibleX = intermediateStep + r * 2
     possibleX2 = -intermediateStep + r * 2
-    # console.log(possibleX, possibleX2)
 
     for x in [0..r * 4]
       if Math.floor(possibleX) is x or Math.ceil(possibleX2) is x
@@ -25,5 +24,10 @@ printCircle = (r) ->
         process.stdout.write ' '
 
     process.stdout.write '\n'
+
+# printCircle 0
+# printCircle 1
+# printCircle 2
+# printCircle 6
 
 module.exports = printCircle
