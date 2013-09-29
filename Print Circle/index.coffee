@@ -7,6 +7,7 @@
 STRETCH_FACTOR = 2
 
 printCircle = (r) ->
+  return if r is 0
   # circle (oval, see above) in 1st quadrant, tangent to axis x and y for easier
   # manip, equation:
   # (x - r - STRETCH_FACTOR)^2 / (STRETCH_FACTOR^2 * r^2) + (y - r)^2 / r^2 = 1
