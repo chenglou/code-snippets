@@ -13,6 +13,7 @@ describe "Greatest common divisor", ->
     expect(GCD 3, 3).toBe 3
   it "should find the GCD", ->
     expect(GCD 3, 9).toBe 3
+    expect(GCD 9, 3).toBe 3
     expect(GCD 7, -15).toBe -1
     expect(GCD 4, 8).toBe 4
 
