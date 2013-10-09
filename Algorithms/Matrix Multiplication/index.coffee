@@ -1,16 +1,16 @@
 # Matrix Multiplication
 
-_mapRange = (arr, start, end, func) -> func i for i in [start...end]
+_mapRange = (start, end, func) -> func i for i in [start...end]
 
-matrixMultiply = (mat1, mat2) ->
-  return [] if mat1.length isnt mat2[0]?.length
+matrixMultiply = (matrix1, matrix2) ->
+  return [] if matrix1.length isnt matrix2[0]?.length
   # return me a matrix
-  mat1.map (row1) ->
+  matrix1.map (matrix1Row) ->
     # return me a row
-    _mapRange row1, 0, mat2[0].length, (j) ->
+    _mapRange 0, matrix2[0].length, (i) ->
       # return me a cell
-      mat2
-        .map((row2, k) -> row1[k] * mat2[k][j])
+      matrix2
+        .map((row2, j) -> matrix1Row[j] * matrix2[j][i])
         .reduce (x, y) -> x + y
 
 module.exports = matrixMultiply
