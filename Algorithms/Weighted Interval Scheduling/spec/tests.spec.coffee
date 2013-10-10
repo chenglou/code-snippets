@@ -1,6 +1,4 @@
-intervalSchedule = require '../'
-recursivelySchedule = intervalSchedule.recursivelySchedule
-iterativelySchedule = intervalSchedule.iterativelySchedule
+{recursivelySchedule, iterativelySchedule} = require '../'
 
 describe "Achieve maximum active duration", ->
   tasks = [

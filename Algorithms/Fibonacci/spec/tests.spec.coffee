@@ -1,4 +1,8 @@
-fib = require '../'
+{fibLoop,
+fibLoopMemoization,
+fibRecursive,
+fibRecursiveMemoization,
+fibGoldenRatio} = require '../'
 
 table = [0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765]
 test = (fn) ->
@@ -6,20 +10,20 @@ test = (fn) ->
 
 describe "Fibonacci", ->
 	it "Uses iteration", ->
-		test fib.fibLoop
+		test fibLoop
 	it "Uses iteration plus memoization", ->
-		test fib.fibLoopMemoization
+		test fibLoopMemoization
 	it "Uses recursion", ->
-		test fib.fibRecursive
+		test fibRecursive
 	it "Uses recursion plus memoization", ->
-		test fib.fibRecursiveMemoization
+		test fibRecursiveMemoization
 	it "Uses golde ratio", ->
-		test fib.fibGoldenRatio
+		test fibGoldenRatio
 	it "should be the same for every method on bigger numbers", ->
 		for i in [table.length + 1..table.length + 10]
 			# Assuming the basic version is right
-			result = fib.fibLoop i
-			expect(fib.fibLoopMemoization i).toBe result
-			expect(fib.fibRecursive i).toBe result
-			expect(fib.fibRecursiveMemoization i).toBe result
-			expect(fib.fibGoldenRatio i).toBe result
+			result = fibLoop i
+			expect(fibLoopMemoization i).toBe result
+			expect(fibRecursive i).toBe result
+			expect(fibRecursiveMemoization i).toBe result
+			expect(fibGoldenRatio i).toBe result
