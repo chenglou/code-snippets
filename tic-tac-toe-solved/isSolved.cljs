@@ -7,7 +7,7 @@
 
 (defn get-diag [mat] (for [i (range (count mat))] (get-in mat [i i])))
 
-(defn check-row [row n] (apply = (conj row n)))
+(defn check-row [row n] (apply = n row))
 
 (defn check-diag [mat n] (check-row (get-diag mat) n))
 
