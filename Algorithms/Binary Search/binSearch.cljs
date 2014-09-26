@@ -3,8 +3,8 @@
     (cond
       (< end start) -1
       (= item (arr mid)) mid
-      (< item (arr mid)) (bin-search-impl arr item start (- mid 1))
-      :else (bin-search-impl arr item (+ mid 1) end))))
+      (< item (arr mid)) (bin-search-impl arr item start (dec mid))
+      :else (bin-search-impl arr item (inc mid) end))))
 
 (defn bin-search [arr item] (bin-search-impl arr item 0 (- (count arr) 1)))
 
