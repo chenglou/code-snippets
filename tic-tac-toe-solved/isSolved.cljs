@@ -1,9 +1,8 @@
 ; arbitrary size tic-tac-toe board; check the state of the game
 
-(defn toVec [mat] (into [] (map (partial into []) mat)))
-
+(defn transpose [mat] (apply (partial map vector) mat))
 ;transpose + reverse each row
-(defn rotate [mat] (toVec (map rseq (apply (partial map vector) mat))))
+(defn rotate [mat] (mapv #(vec (rseq %)) (transpose mat)))
 
 (defn get-diag [mat] (for [i (range (count mat))] (get-in mat [i i])))
 
