@@ -10,7 +10,7 @@
     :else (do
             (swap! visited conj node)
             (let [tos (map #(dfs-impl g % visited) (g node))
-                  valid-res (drop-while #(empty? %) tos)]
+                  valid-res (drop-while empty? tos)]
               (if (empty? valid-res)
                 []
                 (cons node (first valid-res)))))))
