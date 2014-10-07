@@ -37,3 +37,5 @@ module.exports =
   ones: ones
   nat: nat
   sieve: sieve
+
+console.log(sieve (nat 1))
