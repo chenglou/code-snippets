@@ -5,8 +5,7 @@
     [nil _] true
     [\* _] (or (r-match rs ss) (r-match rs S) (r-match R ss))
     [_ nil] false
-    [\. _] (r-match rs ss)
-    [s _] (r-match rs ss)
+    [(:or s \.) _] (r-match rs ss)
     :else false))
 
 ;-----------
