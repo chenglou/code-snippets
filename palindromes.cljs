@@ -1,9 +1,7 @@
-(defn sort-letters [w] (clojure.string/join "" (sort w)))
-
 (defn palindromes [words]
   (vals (reduce (fn [acc a]
-                  (let [sorted (sort-letters a)]
-                    (assoc acc sorted (conj (acc sorted #{}) a))))
+                  (let [key (sort a)]
+                    (assoc acc key (conj (acc key #{}) a))))
                 {}
                 words)))
 
