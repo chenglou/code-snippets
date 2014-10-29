@@ -23,9 +23,9 @@
 (assert (= a (flip-edges a)))
 
 (assert (= {:c [:a :b]
-    :b []
-    :a []}
-   (flip-edges b)))
+            :b []
+            :a []}
+           (flip-edges b)))
 
 ; dest nodes order actually not ordered; works here by coincidence/convenience
 (assert (= c (flip-edges (flip-edges c))))
