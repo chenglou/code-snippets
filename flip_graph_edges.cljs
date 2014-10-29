@@ -1,13 +1,10 @@
-(defn in? [coll a] (contains? (set coll) a))
-
-(defn get-froms [g to]
-  (remove nil? (map (fn [each-tos from] (if (in? each-tos to) from))
-                    (vals g)
-                    (keys g))))
-
 (defn flip-edges [g]
-  (let [froms (keys g)]
-    (zipmap froms (map #(get-froms g %) froms))))
+  (reduce (fn [acc [node tos]]
+            (reduce #(assoc %1 %2 (conj (%1 %2) node))
+                    acc
+                    tos))
+          (zipmap (keys g) (repeat []))
+          g))
 
 ; -----------
 (def a {:a [:a]})
