@@ -1,8 +1,8 @@
 ; Prim's algorithm.
 
 ; let E, list of edges in graph
-;     R, set of currently reached nodes. Has one random initial node
-;     R', set of currently not yet reached nodes
+;     R, set of visited nodes. Has one random initial node
+;     R', set of unvisited nodes
 
 ; greedily find minimum weight edge e_min=(n1, n2) such that n1 E R and n2 E R'
 ; move n2 from R' to R
