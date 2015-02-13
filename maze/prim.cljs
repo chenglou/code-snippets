@@ -10,12 +10,12 @@
   (let [[up-x up-y :as up] [x (dec y)]
         [down-x down-y :as down] [x (inc y)]
         [left-x left-y :as left] [(dec x) y]
-        [right-x right-y :as right] [(inc x) y]
-        up? (when (is-visited (get-in maze [up-y up-x])) up)
-        down? (when (is-visited (get-in maze [down-y down-x])) down)
-        left? (when (is-visited (get-in maze [left-y left-x])) left)
-        right? (when (is-visited (get-in maze [right-y right-x])) right)]
-    (filter some? [up? down? left? right?])))
+        [right-x right-y :as right] [(inc x) y]]
+    (cond-> []
+            (is-visited (get-in maze [up-y up-x])) (conj up)
+            (is-visited (get-in maze [down-y down-x])) (conj down)
+            (is-visited (get-in maze [left-y left-x])) (conj left)
+            (is-visited (get-in maze [right-y right-x])) (conj right))))
 
 (defn find-frontiers [maze]
   (for [i (range (count maze))
