@@ -23,7 +23,7 @@
 (defn mst [E]
   (let [nodes (set (apply concat E))
         n1 (first nodes)]
-     (time (mst' E #{n1} (disj nodes n1) []))))
+    (mst' E #{n1} (disj nodes n1) [])))
 
 (defn empty-maze [w h]
   (for [n (range h)
@@ -31,9 +31,9 @@
         t [0 1]
         :when (and (not (and (= t 1)
                              (= n (dec h))))
-                   (not (and (= t 0)
+                   (not (and (zero? t)
                              (= m (dec w)))))]
-    (if (= 0 t)
+    (if (zero? t)
       [[n m] [n (inc m)]]
       [[n m] [(inc n) m]])))
 
