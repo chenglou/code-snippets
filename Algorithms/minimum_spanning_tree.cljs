@@ -19,10 +19,10 @@
   (if (empty? R')
     accum
     (let [[n1 n2 :as e_min] (apply min-key E (reachable-edges E R R'))]
-        (recur E
-               (conj R n1 n2)
-               (disj R' n1 n2)
-               (conj accum e_min)))))
+      (recur E
+             (conj R n1 n2)
+             (disj R' n1 n2)
+             (conj accum e_min)))))
 
 (defn mst [E]
   (let [nodes (set (mapcat first E))
