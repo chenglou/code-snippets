@@ -1,4 +1,4 @@
-(defn remove-at [coll i] (concat (take i coll) (drop (+ i 1) coll)))
+(defn remove-at [coll i] (concat (take i coll) (drop (inc i) coll)))
 
 (defn permute [s]
   (if (empty? s)
@@ -7,7 +7,7 @@
                     #(map (partial cons %2) (permute (remove-at s %1)))
                     s))))
 
-(defn permute-word [s] (into #{} (map clojure.string/join (permute s))))
+(defn permute-word [s] (set (map clojure.string/join (permute s))))
 
 ;----------
 (assert (= (permute-word "") #{""}))

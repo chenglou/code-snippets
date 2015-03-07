@@ -4,13 +4,13 @@
 ;transpose + reverse each row
 (defn rotate [mat] (mapv #(vec (rseq %)) (transpose mat)))
 
-(defn get-diag [mat] (for [i (range (count mat))] (get-in mat [i i])))
+(defn get-diag [mat] (map #(%1 %2) mat (range)))
 
 (defn check-row [row n] (apply = n row))
 
 (defn check-diag [mat n] (check-row (get-diag mat) n))
 
-(defn has0 [mat] (some (fn [r] (some #(= % 0) r)) mat))
+(defn has0 [mat] (some #(some zero? %) mat))
 
 (defn check-row-and-diag [board n]
   (or (some #(check-row % n) board)

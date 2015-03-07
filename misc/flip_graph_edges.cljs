@@ -1,6 +1,6 @@
 (defn flip-edges [g]
   (reduce (fn [acc [node tos]]
-            (reduce #(assoc %1 %2 (conj (%1 %2) node))
+            (reduce #(update-in %1 [%2] conj node)
                     acc
                     tos))
           (zipmap (keys g) (repeat []))
