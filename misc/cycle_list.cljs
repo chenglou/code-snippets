@@ -20,11 +20,18 @@
     (for [i (range size)]
       (drop-take ss i size))))
 
+(defn cycle-list-4 [s]
+  (let [size (count s)]
+    (->> (cycle s)
+         (partition-all size 1)
+         (take size))))
+
 ;-----------
 (assert (= []
            (cycle-list-1 [])
            (cycle-list-2 [])
-           (cycle-list-3 [])))
+           (cycle-list-3 [])
+           (cycle-list-4 [])))
 
 (assert (= [[1]]
            (cycle-list-1 [1])
